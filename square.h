@@ -5,14 +5,13 @@
 /*
     \brief Переменные для введения понятных обозначений количества корней
  */
-enum Errors{
-    OK = 0,
-    SQUARE_ZERO_ROOTS = 1,
-    SQUARE_ONE_ROOT = 2,
-    SQUARE_TWO_ROOTS = 3,
-    LINEAR_ZERO_ROOTS = 4,
-    LINEAR_ONE_ROOT = 5,
-    LINEAR_INF_ROOTS = 6
+enum type_and_roots{
+    SQUARE_ZERO_ROOTS = 0,
+    SQUARE_ONE_ROOT = 1,
+    SQUARE_TWO_ROOTS = 2,
+    LINEAR_ZERO_ROOTS = 3,
+    LINEAR_ONE_ROOT = 4,
+    LINEAR_INF_ROOTS = 5
 };
 
 /*
@@ -50,8 +49,7 @@ int solving_the_square(float a, float b, float c, float *x_1, float *x_2);
     \details Принимает на вход количество корней и их значения.
     Выводит на экран количество корня/корней и его/их значение, в зависимости от их количества.
     \param[in] num_of_roots - количество корней. x_1, x_2 - значения корней
-
  */
-int printing(int num_of_roots, float x_1, float x_2);
+void printing(int num_of_roots, float x_1, float x_2);
 
 
