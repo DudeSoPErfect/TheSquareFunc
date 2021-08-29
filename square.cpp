@@ -7,14 +7,12 @@
 #include <stdbool.h>
 #include <assert.h>
 #include "square.h"
-#include "testing.h"
 
 const double EPS = 1e-8;
 
 bool is_zero(float u) {
     assert(!isnan(u));
     return fabs(u) < EPS;
-
 }
 
 int solving_the_line(float a, float b, float *x_1) {
@@ -34,7 +32,6 @@ int solving_the_line(float a, float b, float *x_1) {
     *x_1 = -(b / a);
 
     return LINEAR_ONE_ROOT;
-
 }
 
 int solving_the_square(float a, float b, float c, float *x_1, float *x_2) {
@@ -61,12 +58,9 @@ int solving_the_square(float a, float b, float c, float *x_1, float *x_2) {
             return SQUARE_ZERO_ROOTS;
         }
     }
-
-
 }
 
 int printing(int num_of_roots, float x_1, float x_2) {
-
 
     switch (num_of_roots) {
         case SQUARE_ZERO_ROOTS:
@@ -87,12 +81,15 @@ int printing(int num_of_roots, float x_1, float x_2) {
         case LINEAR_INF_ROOTS:
             printf("Linear, infinite number of roots\n");
             break;
+        default:
+            printf("Can't define the root number\n");
+            break;
     }
+
     if (num_of_roots == 1) {
         printf("%d %f\n", num_of_roots, x_1);
     } else if (num_of_roots == 2) {
         printf("%d %f %f\n", num_of_roots, x_1, x_2);
-
     }
     return OK;
 }
