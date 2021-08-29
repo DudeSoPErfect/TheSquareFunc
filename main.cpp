@@ -6,7 +6,8 @@
 #include "square.h"
 #include "testing.h"
 
-int main() {
+int main()
+{
     float a = 0, b = 0, c = 0, x_1 = 0, x_2 = 0;
     testing();
 
@@ -19,8 +20,8 @@ int main() {
     }
     else
     {
-        printf("Wrong input data");
-        return 0;
+        printf("Wrong input data\n");
+        return -1;
     }
 }
 
