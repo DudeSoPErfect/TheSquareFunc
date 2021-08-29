@@ -1,22 +1,25 @@
-#ifndef UNTITLED_SQUARE_H
-#define UNTITLED_SQUARE_H
+/*
+    \file Заголовочный файл для обьявления функций.
+ */
 
-enum {
+/*
+    \brief Переменные для введения понятных обозначений количества корней
+ */
+enum Errors{
     OK = 0,
-    SQUARE_ZERO_ROOTS,
-    SQUARE_ONE_ROOT,
-    SQUARE_TWO_ROOTS,
-    LINEAR_ZERO_ROOTS,
-    LINEAR_ONE_ROOT,
-    LINEAR_INF_ROOTS
-} Errors;
+    SQUARE_ZERO_ROOTS = 1,
+    SQUARE_ONE_ROOT = 2,
+    SQUARE_TWO_ROOTS = 3,
+    LINEAR_ZERO_ROOTS = 4,
+    LINEAR_ONE_ROOT = 5,
+    LINEAR_INF_ROOTS = 6
+};
 
 /*
     \brief Функция принимает значение и возвращает булевое значение,
     является ли правдой, что значение равно 0.
     \param[in] u - исходное значение.
  */
-
 bool is_zero(float u);
 
 /*
@@ -28,7 +31,6 @@ bool is_zero(float u);
     \param[out] x_1 - указатель на корень.
     \param[in] a, b - коэффициенты.
  */
-
 int solving_the_line(float a, float b, float *x_1);
 
 /*
@@ -41,7 +43,6 @@ int solving_the_line(float a, float b, float *x_1);
     \param[out] x_1, x_2 - указатели на корни.
     \param[in] a, b, c - коэффициенты.
  */
-
 int solving_the_square(float a, float b, float c, float *x_1, float *x_2);
 
 /*
@@ -51,7 +52,6 @@ int solving_the_square(float a, float b, float c, float *x_1, float *x_2);
     \param[in] num_of_roots - количество корней. x_1, x_2 - значения корней
 
  */
-
 int printing(int num_of_roots, float x_1, float x_2);
 
-#endif //UNTITLED_SQUARE_H
+
