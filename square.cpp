@@ -10,15 +10,16 @@
 
 const double EPS = 1e-8;
 
-bool is_zero(float u) {
+bool is_zero(float u)
+{
     assert(!isnan(u));
     return fabs(u) < EPS;
 }
 
-int solving_the_line(float a, float b, float *x_1) {
-
-    assert(!isnan(a));
-    assert(!isnan(b));
+int solving_the_line(float a, float b, float *x_1)
+{
+    assert(isfinite(a));
+    assert(isfinite(b));
     assert(x_1 != NULL);
 
     if (is_zero(a)) {
@@ -34,18 +35,21 @@ int solving_the_line(float a, float b, float *x_1) {
     return LINEAR_ONE_ROOT;
 }
 
-int solving_the_square(float a, float b, float c, float *x_1, float *x_2) {
+int solving_the_square(float a, float b, float c, float *x_1, float *x_2)
+{
 
     assert((isfinite(a) || isfinite(b) || isfinite(c)));
     assert(x_1 != NULL);
     assert(x_2 != NULL);
     assert(x_1 != x_2);
 
-    float D = b * b - 4 * a * c;
-
-    if (is_zero(a)) {
+    if (is_zero(a))
+    {
         return solving_the_line(b, c, x_1);
-    } else {
+    }
+    else
+    {
+        float D = b * b - 4 * a * c;
         if (is_zero(D)) {
             *x_1 = (b * (-1) + sqrt(D)) / (2 * a);
             return SQUARE_ONE_ROOT;
@@ -54,29 +58,29 @@ int solving_the_square(float a, float b, float c, float *x_1, float *x_2) {
             *x_2 = (b * (-1) + sqrt(D)) / (2 * a);
             return SQUARE_TWO_ROOTS;
         } else {
-            *x_1 = 0;
             return SQUARE_ZERO_ROOTS;
         }
     }
 }
 
-int printing(int num_of_roots, float x_1, float x_2) {
+void printing(int num_of_roots, float x_1, float x_2)
+{
 
     switch (num_of_roots) {
         case SQUARE_ZERO_ROOTS:
             printf("Square, no roots\n");
             break;
         case SQUARE_ONE_ROOT:
-            printf("Square, one roots %f\n", x_1);
+            printf("Square, one root: %f\n", x_1);
             break;
         case SQUARE_TWO_ROOTS:
-            printf("Square, two roots %f and %f\n", x_1, x_2);
+            printf("Square, two roots: %f and %f\n", x_1, x_2);
             break;
         case LINEAR_ZERO_ROOTS:
             printf("Linear, no roots\n");
             break;
         case LINEAR_ONE_ROOT:
-            printf("Linear, one root %f\n", x_1);
+            printf("Linear, one root: %f\n", x_1);
             break;
         case LINEAR_INF_ROOTS:
             printf("Linear, infinite number of roots\n");
@@ -85,11 +89,4 @@ int printing(int num_of_roots, float x_1, float x_2) {
             printf("Can't define the root number\n");
             break;
     }
-
-    if (num_of_roots == 1) {
-        printf("%d %f\n", num_of_roots, x_1);
-    } else if (num_of_roots == 2) {
-        printf("%d %f %f\n", num_of_roots, x_1, x_2);
-    }
-    return OK;
 }
